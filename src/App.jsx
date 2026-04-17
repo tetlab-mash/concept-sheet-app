@@ -18,7 +18,9 @@ const defaultProject = () => ({
     purpose: "",
     kgi: "",
     kpi: "",
-    mainTarget: "",
+    mainTargetAge: "",
+    mainTargetGender: "",
+    mainTargetOther: "",
     subTarget: "",
     inflow: [],
     conceptWords: "",
@@ -196,7 +198,29 @@ function ConceptSheetForm({ data, onChange }) {
 
       <SectionHeader number="03" title="ターゲットユーザー" />
       <Field label={<>メイン<br />ターゲット</>}>
-        <TextInput value={data.mainTarget} onChange={set("mainTarget")} placeholder="年齢・性別・職業・ライフスタイル・課題感など具体的なペルソナを記述" multiline rows={2} />
+        <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+
+          <TextInput
+            value={data.mainTargetAge}
+            onChange={set("mainTargetAge")}
+            placeholder="年齢（例：30代前半）"
+          />
+
+          <TextInput
+            value={data.mainTargetGender}
+            onChange={set("mainTargetGender")}
+            placeholder="性別（例：女性）"
+          />
+
+          <TextInput
+            value={data.mainTargetOther}
+            onChange={set("mainTargetOther")}
+            placeholder="その他情報（職業・ライフスタイルなど）"
+            multiline
+            rows={2}
+          />
+
+        </div>
       </Field>
       <Field label="サブターゲット">
         <TextInput value={data.subTarget} onChange={set("subTarget")} placeholder="補助的なターゲット層（任意）" />
